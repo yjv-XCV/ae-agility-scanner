@@ -24,3 +24,59 @@ body {
 .full-width {
     width: 100vw;
 }
+
+.position-abs {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.result.position-abs {
+    top: 534px;
+    left: 500px;
+    display: none;
+}
+
+.result.active {
+    display: block;
+}
+
+#code-img {
+    top: 374px;
+    left: 523px;
+}
+
+#check-img {
+    top: 379px;
+    left: 1028px;
+}
+
+#code {
+    top: 384px;
+    left: 525px;
+    width: 477px;
+    height: 120px;
+    font-size: 60px;
+    text-align: center;
+}
+
+#check {
+    top: 390px;
+    left: 1050px;
+    width: 350px;
+    height: 115px;
+}
+
+#text {
+    padding-top: 8px;
+    top: 578px;
+    left: 529px;
+    width: 867px;
+    height: 241px;
+    font-size: 45px;
+    color: #59595a;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,26 @@
+[debug] [2018-05-17T01:26:07.735Z] ----------------------------------------------------------------------
+[debug] [2018-05-17T01:26:07.739Z] Command:       /usr/local/Cellar/node/8.4.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-05-17T01:26:07.739Z] CLI Version:   3.17.1
+[debug] [2018-05-17T01:26:07.739Z] Platform:      darwin
+[debug] [2018-05-17T01:26:07.739Z] Node Version:  v8.4.0
+[debug] [2018-05-17T01:26:07.740Z] Time:          Thu May 17 2018 09:26:07 GMT+0800 (+08)
+[debug] [2018-05-17T01:26:07.740Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-05-17T01:26:07.784Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-17T01:26:07.784Z] > authorizing via signed-in user
+[debug] [2018-05-17T01:26:07.786Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-05-17T01:26:07.786Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/DTe1rRGdisP1DPiL03lGNyqzgcu5YSIeOrxgtMXGRB0',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu May 17 2018 09:26:07 GMT+0800 (+08)
+[debug] [2018-05-17T01:26:08.025Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-17T01:26:08.042Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ae-aglity-challenge  
+  
+ Thu May 17 2018 09:26:08 GMT+0800 (+08)
+[debug] [2018-05-17T01:26:09.107Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-17T01:26:09.109Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ae-aglity-challenge/tokens  
+  
+ Thu May 17 2018 09:26:09 GMT+0800 (+08)

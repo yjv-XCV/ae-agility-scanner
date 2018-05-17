@@ -26,11 +26,54 @@ let login = function() {
 }
 login();
 
-window.onload = function() {
 
-  let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-  scanner.addListener('scan', function (content) {
-    console.log(content);
+window.onload = function() {
+  let timer;
+  function startTimer() {
+    timer = setTimeout(() => {
+      pleaseScanOrInput();
+    }, 5000); 
+  }
+  function clearTimer() {
+    clearTimeout(timer);
+  }
+
+  let result_pane = {
+    positive: document.getElementById('positive'),
+    negative: document.getElementById('negative'),
+    neutral: document.getElementById('neutral'),
+    text: document.getElementById('text'),
+  }
+
+  function codeIsValid(type) {
+    result_pane.positive.classList.add('active');
+    result_pane.negative.classList.remove('active');
+    result_pane.neutral.classList.remove('active');
+    result_pane.text.innerHTML = (`This ${type} Challenge code is valid.`);
+  }
+
+  function codeIsRedeemed(type) {
+    result_pane.positive.classList.remove('active');
+    result_pane.negative.classList.add('active');
+    result_pane.neutral.classList.remove('active');
+    result_pane.text.innerHTML = (`This ${type} Challenge code has been redeemed.`);
+  }
+
+  function codeIsInvalid() {
+    result_pane.positive.classList.remove('active');
+    result_pane.negative.classList.add('active');
+    result_pane.neutral.classList.remove('active');
+    result_pane.text.innerHTML = (`This code is invalid.`);
+  }
+
+  function pleaseScanOrInput() {
+    result_pane.positive.classList.remove('active');
+    result_pane.negative.classList.remove('active');
+    result_pane.neutral.classList.add('active');
+    result_pane.text.innerHTML = ('Please scan a QR code or key in it.');
+  }
+
+  function validatingCode(content) {
     if(content.match(/^[a-zA-Z0-9]*$/)) {
       // Get data, ammend data
       let type;
@@ -48,16 +91,29 @@ window.onload = function() {
                 console.log(e);
               })
               .then(() => {
-                alert(`You have successfully redeemed your ${type} of reward!`);
+                codeIsValid(type);
+                // alert(`You have successfully redeemed your ${type} of reward!`);
               });
-          } else alert('This code has been redeemed!');
-        } else  alert ('This code doesn\'t exist');
+          } else codeIsRedeemed(type);
+        } else  codeIsInvalid();
       });
       
     } else {
-      alert('The QR code doens\'t follow the format');
+      codeIsInvalid();
     }
+    startTimer();
+  }
 
+  document.getElementById('check').onclick = function() {
+    let content = document.getElementById('code').value;
+    clearTimer();
+    validatingCode(content);
+  }
+
+  let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+  scanner.addListener('scan', function (content) {
+    console.log(content);
+    validatingCode(content);
   });
   Instascan.Camera.getCameras().then(function (cameras) {
     if (cameras.length > 0) {

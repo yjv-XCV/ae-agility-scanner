@@ -2,17 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QR Scanner 3.0</title>
+    <title>QR Scanner 4.0</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script type="text/javascript" src="assets/js/instascan.min.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
+    <style>
+        body{
+            background-image: url('assets/media/bg.jpg');
+        }
+    </style>
 </head>
 <body>
     <div class="full-height full-width flex justify-content-center align-items-center">
-        <div class="sq500 overflow-hidden">
+        <div class="">
             <video id="preview"></video>
         </div>
     </div>
+    <div>
+        <img src="assets/media/textbox_result_neutral.png" class="result active position-abs" id="neutral">
+        <img src="assets/media/textbox_result_positive.png" class="result position-abs" id="positive">
+        <img src="assets/media/textbox_result_negative.png" class="result position-abs" id="negative">
+        <div class="position-abs" id="text">Please scan a QR code or key in it.</div>
+    </div>
+    <img src="assets/media/textbox_code.png" class="position-abs" id="code-img">
+    <input class="position-abs" autofocus id="code" type="text">
+    <img src="assets/media/btn_check.png" class="position-abs" id="check-img">
+    <div class="position-abs" id="check"></div>
 </body>
 </html>
