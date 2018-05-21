@@ -31,6 +31,7 @@ window.onload = function() {
   let timer;
   function startTimer() {
     timer = setTimeout(() => {
+      document.getElementById('code').value = '';
       pleaseScanOrInput();
     }, 5000); 
   }
