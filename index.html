@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QR Scanner 5.1</title>
+    <title>QR Scanner 6.0</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/5.0.1/firebase.js"></script>
     <script type="text/javascript" src="assets/js/instascan.min.js"></script>
@@ -14,6 +14,9 @@
     </style>
 </head>
 <body>
+    <div class="position-abs overlay flex justify-content-center align-items-center">
+        <img id="loading" src="assets/media/loading.gif" alt="">
+    </div>
     <div class="position-abs overflow-hidden flex justify-content-center" id="scanner">
         <div>
             <video id="preview"></video>

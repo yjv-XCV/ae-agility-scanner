@@ -99,3 +99,19 @@ body {
 #preview {
     height: 467px;
 }
+
+.overlay {
+    background: white;
+    z-index: 2;
+    width: 1366px;
+    height: 768px;
+    opacity: 0.5;
+}
+
+.overlay > #loading {
+    display: block;
+}
+
+#loading {
+    display: none
+}

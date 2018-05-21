@@ -12,22 +12,32 @@ let pass = 'user1@mail.io';
 
 let app = firebase.initializeApp(config);
 let db = firebase.database();
-let login = function() {
-  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
-    // ...
-  }).then(function() {
-    console.log('Ready');
-  });
-}
-login();
 
 
 window.onload = function() {
+  let login = function() {
+    firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode);
+      console.log(errorMessage);
+      // ...
+    }).then(function() {
+      console.log('Ready');
+      document.getElementsByClassName('overlay')[0].classList.remove('overlay');
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    });
+  }
+  login();
   let timer;
   function startTimer() {
     timer = setTimeout(() => {
@@ -115,15 +125,6 @@ window.onload = function() {
   scanner.addListener('scan', function (content) {
     console.log(content);
     validatingCode(content);
-  });
-  Instascan.Camera.getCameras().then(function (cameras) {
-    if (cameras.length > 0) {
-      scanner.start(cameras[0]);
-    } else {
-      console.error('No cameras found.');
-    }
-  }).catch(function (e) {
-    console.error(e);
   });
 
 }
