@@ -90,7 +90,7 @@ window.onload = function() {
   }
 
   function validatingCode(content) {
-    if(content.match(/^[a-zA-Z0-9]*$/)) {
+    if(content && content.match(/^[a-zA-Z0-9]*$/)) {
       // Get data, ammend data
       let type;
       let isRedeemed;
