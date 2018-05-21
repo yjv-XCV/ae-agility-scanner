@@ -12,6 +12,11 @@ let pass = 'user1@mail.io';
 
 let app = firebase.initializeApp(config);
 let db = firebase.database();
+let textForType = {
+  agile: 'Agile',
+  dispensedAgile: 'Agile',
+  yoga: 'Yoga',
+}
 
 
 window.onload = function() {
@@ -60,14 +65,14 @@ window.onload = function() {
     result_pane.positive.classList.add('active');
     result_pane.negative.classList.remove('active');
     result_pane.neutral.classList.remove('active');
-    result_pane.text.innerHTML = (`This ${type} Challenge code is valid.`);
+    result_pane.text.innerHTML = (`This ${textForType[type]} Challenge code is valid.`);
   }
 
   function codeIsRedeemed(type) {
     result_pane.positive.classList.remove('active');
     result_pane.negative.classList.add('active');
     result_pane.neutral.classList.remove('active');
-    result_pane.text.innerHTML = (`This ${type} Challenge code has been redeemed.`);
+    result_pane.text.innerHTML = (`This ${textForType[type]} Challenge code has been redeemed.`);
   }
 
   function codeIsInvalid() {
