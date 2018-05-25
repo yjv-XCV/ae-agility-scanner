@@ -17,6 +17,7 @@ let textForType = {
   dispensedAgile: 'Agile',
   yoga: 'Yoga',
 }
+let scanner_config;
 
 
 window.onload = function() {
@@ -30,6 +31,9 @@ window.onload = function() {
       // ...
     }).then(function() {
       console.log('Ready');
+      db.ref('scanner_config').once('value', function(snapshot) {
+        scanner_config = snapshot.val();
+      });
       document.getElementsByClassName('overlay')[0].classList.remove('overlay');
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
@@ -48,7 +52,7 @@ window.onload = function() {
     timer = setTimeout(() => {
       document.getElementById('code').value = '';
       pleaseScanOrInput();
-    }, 5000); 
+    }, scanner_config.countdown); 
   }
   function clearTimer() {
     clearTimeout(timer);
@@ -66,6 +70,7 @@ window.onload = function() {
     result_pane.negative.classList.remove('active');
     result_pane.neutral.classList.remove('active');
     result_pane.text.innerHTML = (`This ${textForType[type]} Challenge code is valid.`);
+    if(scanner_config.useAlert)alert(`This ${textForType[type]} Challenge code is valid.`);
   }
 
   function codeIsRedeemed(type) {
@@ -73,6 +78,7 @@ window.onload = function() {
     result_pane.negative.classList.add('active');
     result_pane.neutral.classList.remove('active');
     result_pane.text.innerHTML = (`This ${textForType[type]} Challenge code has been redeemed.`);
+    if(scanner_config.useAlert)alert(`This ${textForType[type]} Challenge code has been redeemed.`);
   }
 
   function codeIsInvalid() {
@@ -80,6 +86,7 @@ window.onload = function() {
     result_pane.negative.classList.add('active');
     result_pane.neutral.classList.remove('active');
     result_pane.text.innerHTML = (`This code is invalid.`);
+    if(scanner_config.useAlert)alert(`This code is invalid.`);
   }
 
   function pleaseScanOrInput() {
